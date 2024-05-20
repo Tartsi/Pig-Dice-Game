@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pig-dice-game"
+version = "0.1.0"
+description = "Pig-Dice-Game"
+authors = ["Tartsi <tarvo.lilja@hotmail.fi>"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,6 @@
+__pycache__/
+.coverage
+htmlcov
+.env
+src/build/
+.vscode
