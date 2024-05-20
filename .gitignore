@@ -4,3 +4,4 @@ htmlcov
 .env
 src/build/
 .vscode
+db.sqlite3
