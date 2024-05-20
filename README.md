@@ -11,9 +11,10 @@
 
 - First player to reach 100 points or over wins the game!
 
-- This project will have a backend, and the option of playing vs CPU. Backend coding language is TBD as of yet.
+- This project will have a backend using Django, and the option of playing vs CPU. Backend coding language is going to be Python, with the frontend developed using HTML, CSS and JavaScript.
 
 # Modifications
 
 - Modifications from the original project include the addition of backend and the option of playing vs CPU. Any other modifications will be updated if they are to come during progression of this project.
+
 - All credit regarding the projects idea and outer design goes to Jonas Schmedtmann's and his JS-course - as was mentioned above!
