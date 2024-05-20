@@ -1,0 +1,25 @@
+[MASTER]
+
+ignore=tests,migrations
+
+[MESSAGE CONTROL]
+
+disable=raw-checker-failed,
+        useless-suppression,
+        use-symbolic-message-instead,
+        broad-exception-caught,
+        too-few-public-methods,
+        missing-module-docstring,
+        missing-class-docstring,
+        function-redefined,
+        unused-import,
+        invalid-str-returned,
+        no-member
+
+[FORMAT]
+max-line-length = 100
+
+[DESIGN]
+max-branches = 10
+max-locals = 10
+max-args = 5
