@@ -1,45 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* General */
 body {
-    background-color: #f4f4f4;
+    background-color: #1b1b1b;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P', cursive;
+    color: #ffffff;
 }
 
+/* Headings */
 h1 {
     text-align: center;
-    color: #737170;
-    font-size: 2.5em;
-    text-shadow: 1px 1px 2px #000000;
+    color: #ffcc00;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px #000000;
     margin-bottom: 20px;
     text-decoration: underline;
+    text-decoration-color: #ff0000;
 }
 
 h2 {
     text-align: center;
-    color: #333;
-    font-size: 1.5em;
+    color: #ffcc00;
+    font-size: 2em;
     margin-bottom: 50px;
+    text-shadow: 2px 2px 4px #000000;
 }
 
+/* Button Styles */
 .option {
-    width: 200px;
+    width: 250px;
     height: 100px;
-    border: 1px solid black;
+    border: 2px solid #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
     cursor: pointer;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    background-color: #104f70;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    color: #00ff00;
 }
 
 .option:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.4);
+    background-color: #00ff00;
+    color: #ff0000;
 }
