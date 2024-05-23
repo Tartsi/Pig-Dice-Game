@@ -10,12 +10,12 @@ class PigGame():
     def roll_dice(self):
 
         roll = randint(1, 6)
-        self.current_score += roll
 
         if roll == 1:
-            if self.current_turn == 0:
-                self.current_score = 0
-                self.end_turn()
+            self.current_score = 0
+            self.end_turn()
+
+        self.current_score += roll
 
     def hold(self):
         self.scores[self.current_turn] += self.current_score
