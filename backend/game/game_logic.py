@@ -1,1 +1,27 @@
-# TODO: Define the game logic here using a class and functions!
+from random import randint
+
+
+class PigGame():
+    def __init__(self):
+        self.scores = [0, 0]  # index-0 is player 1, index-1 is player 2
+        self.current_turn = 0  # 0 or 1, 0 always goes first
+        self.current_score = 0
+
+    def roll_dice(self):
+
+        roll = randint(1, 6)
+        self.current_score += roll
+
+        if roll == 1:
+            if self.current_turn == 0:
+                self.current_score = 0
+                self.end_turn()
+
+    def hold(self):
+        self.scores[self.current_turn] += self.current_score
+        self.current_score = 0
+        self.end_turn()
+
+    def end_turn(self):
+        # 'Toggles' between 0 and 1 dynamically
+        self.current_turn = 1 - self.current_turn
