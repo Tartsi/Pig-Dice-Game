@@ -1,6 +1,6 @@
 [MASTER]
 
-ignore=tests,migrations
+ignore=tests.py,migrations
 
 [MESSAGE CONTROL]
 
@@ -14,7 +14,8 @@ disable=raw-checker-failed,
         function-redefined,
         unused-import,
         invalid-str-returned,
-        no-member
+        no-member,
+        import-outside-toplevel
 
 [FORMAT]
 max-line-length = 100
