@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .game_logic import PigGame
+
 # Create your views here.
 
 

@@ -37,3 +37,23 @@ class PigGameTest(TestCase):
         self.assertEqual(self.game.current_turn, 1)
         self.game.end_turn()
         self.assertEqual(self.game.current_turn, 0)
+
+    def test_to_dict(self):
+        self.game.scores = [10, 20]
+        self.game.current_turn = 1
+        self.game.current_score = 5
+        game_dict = self.game.to_dict()
+        self.assertEqual(game_dict['scores'], [10, 20])
+        self.assertEqual(game_dict['current_turn'], 1)
+        self.assertEqual(game_dict['current_score'], 5)
+
+    def test_from_dict(self):
+        game_dict = {
+            'scores': [10, 20],
+            'current_turn': 1,
+            'current_score': 5
+        }
+        game = PigGame.from_dict(game_dict)
+        self.assertEqual(game.scores, [10, 20])
+        self.assertEqual(game.current_turn, 1)
+        self.assertEqual(game.current_score, 5)

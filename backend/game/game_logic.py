@@ -36,3 +36,33 @@ class PigGame():
         Ends the current turn and switches to the next player's turn.
         """
         self.current_turn = 1 - self.current_turn
+
+    def to_dict(self):
+        """
+        Converts the PigGame object to a dictionary representation.
+
+        Returns:
+            dict: A dictionary containing the scores, current turn, and current score.
+        """
+        return {
+            'scores': self.scores,
+            'current_turn': self.current_turn,
+            'current_score': self.current_score
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Creates a new instance of the PigGame class from a dictionary representation.
+
+        Args:
+            data (dict): A dictionary containing the scores, current turn, and current score.
+
+        Returns:
+            PigGame: A new instance of the PigGame class.
+        """
+        game = cls()
+        game.scores = data['scores']
+        game.current_turn = data['current_turn']
+        game.current_score = data['current_score']
+        return game
