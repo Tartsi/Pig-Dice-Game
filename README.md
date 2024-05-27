@@ -1,5 +1,7 @@
 # Pig Dice Game
 
+[![CI](https://github.com/Tartsi/Pig-Dice-Game/actions/workflows/main.yml/badge.svg)](https://github.com/Tartsi/Pig-Dice-Game/actions/workflows/main.yml)
+
 ### Requirements Definition for the project:
 
 - User can roll a normal 1-6 dice.
