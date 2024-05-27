@@ -9,7 +9,7 @@
 <body>
     <div class="game-container">
         <button class="btn restart">🔄 Restart</button>
-        <button class="btn quit">🛑 Quit</button>
+        <button class="btn quit" onclick="resetSession()">🛑 Quit</button>
         <div class="player-score active" id="player0">
             <h2>Player 1</h2>
             <div class="score" id="score--0">0</div>
@@ -28,5 +28,7 @@
             <div class="current-score" id="current-score--1">Current Score: 0</div>
         </div>
     </div>
+
+    <script src="/static/pig.js"></script>
 </body>
 </html>
