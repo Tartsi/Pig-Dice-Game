@@ -135,3 +135,18 @@ body {
 .btn:hover {
     background-color: #c0392b;
 }
+
+/* Winner Highlight */
+.winner {
+    background-color: #27ae60 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 20px #27ae60;
+    border: 2px solid #ffffff;
+    transform: scale(1.1);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.winner h2 {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #000000;
+}
