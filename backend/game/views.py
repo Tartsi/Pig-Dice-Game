@@ -24,8 +24,7 @@ def pig_view(request):
     - request: The HTTP request object.
 
     Returns:
-    - A rendered HTML response along.
-
+    - A rendered HTML response
     """
 
     if 'game' not in request.session:
@@ -53,3 +52,34 @@ def reset(request):
         return JsonResponse({'status': 'success'})
 
     return JsonResponse({'status': 'error'})
+
+
+def roll_dice(request):
+    """
+    Rolls the dice for the Pig Dice Game.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+    - JsonResponse: Response containing the status, roll amount, current score, and current turn.
+    - Important to note that the current turn informs which player will play next.
+    """
+
+    if 'game' in request.session:
+        game = PigGame.from_dict(request.session['game'])
+    else:
+        print('No game session!')
+        return JsonResponse({'status': 'error, no game session found!'})
+
+    dice_roll = game.roll_dice()
+    request.session['game'] = game.to_dict()
+
+    response = {
+        'status': 'success',
+        'roll': dice_roll,
+        'current_score': game.current_score,
+        'current_turn': game.current_turn
+    }
+
+    return JsonResponse(response)

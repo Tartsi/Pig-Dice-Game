@@ -20,8 +20,10 @@ class PigGame():
         if roll == 1:
             self.current_score = 0
             self.end_turn()
+        else:
+            self.current_score += roll
 
-        self.current_score += roll
+        return roll
 
     def hold(self):
         """
