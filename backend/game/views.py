@@ -29,7 +29,6 @@ def pig_view(request):
 
     if 'game' not in request.session:
         request.session['game'] = PigGame().to_dict()
-        print(request.session['game'])
 
     return render(request, 'pig.html')
 
@@ -79,6 +78,39 @@ def roll_dice(request):
         'status': 'success',
         'roll': dice_roll,
         'current_score': game.current_score,
+        'current_turn': game.current_turn
+    }
+
+    return JsonResponse(response)
+
+
+def hold(request):
+    """
+    Handles the hold action in the Pig Dice Game.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+    - JsonResponse: A JSON response containing the game status, scores, and current turn.
+    """
+
+    if 'game' in request.session:
+        game = PigGame.from_dict(request.session['game'])
+    else:
+        print('No game session!')
+        return JsonResponse({'status': 'error, no game session found!'})
+
+    game.hold()
+    request.session['game'] = game.to_dict()
+
+    # Toggle the current turn to switch to the next player
+    # After the current player has held their score
+    game.current_turn = 1 if game.current_turn == 0 else 0
+
+    response = {
+        'status': 'success',
+        'scores': game.scores,
         'current_turn': game.current_turn
     }
 
