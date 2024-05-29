@@ -39,6 +39,14 @@ class PigGame():
         """
         self.current_turn = 1 - self.current_turn
 
+    def restart(self):
+        """
+        Restarts the game by resetting the scores and current turn.
+        """
+        self.scores = [0, 0]
+        self.current_turn = 0
+        self.current_score = 0
+
     def to_dict(self):
         """
         Converts the PigGame object to a dictionary representation.
