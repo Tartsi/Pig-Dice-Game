@@ -53,6 +53,36 @@ def reset(request):
     return JsonResponse({'status': 'error'})
 
 
+def restart(request):
+    """
+    Restarts the Pig Dice Game.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+    - JsonResponse: A JSON response containing the games status restarted.
+    """
+
+    if 'game' in request.session:
+        game = PigGame.from_dict(request.session['game'])
+    else:
+        print('No game session!')
+        return JsonResponse({'status': 'error, no game session found!'})
+
+    game.restart()
+    request.session['game'] = game.to_dict()
+
+    response = {
+        'status': 'success',
+        'scores': game.scores,
+        'current_score': game.current_score,
+        'current_turn': game.current_turn
+    }
+
+    return JsonResponse(response)
+
+
 def roll_dice(request):
     """
     Rolls the dice for the Pig Dice Game.
