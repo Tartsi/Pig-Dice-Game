@@ -7,6 +7,16 @@ class PigGameTest(TestCase):
     def setUp(self):
         self.game = PigGame()
 
+    def test_dice_roll(self):
+        roll = self.game.roll_dice()
+
+        if roll == 1:
+            self.assertEqual(self.game.current_score, 0)
+        else:
+            self.assertEqual(self.game.current_score, roll)
+
+        self.assertTrue(1 <= roll and roll <= 6)
+
     def test_hold(self):
         self.game.current_score = 5
         self.game.hold()
