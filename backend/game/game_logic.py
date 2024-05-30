@@ -47,6 +47,43 @@ class PigGame():
         self.current_turn = 0
         self.current_score = 0
 
+    def cpu_move(self):
+        """
+        Perform the CPU's move in the game.
+
+        If the scores of either player reach 71 or more,
+        the CPU will roll the dice until it rolls a 1
+        or its current score plus its total score is 100 or more.
+        If neither player has reached 71 or more,
+        the CPU will try to keep pace with the opponent's score.
+        It will hold when its current score is equal to or greater
+        than the target score,
+        which is calculated as 21 plus the absolute difference between
+        the scores of the two players divided by 8.
+        """
+        if self.scores[0] >= 71 or self.scores[1] >= 71:
+            # End race - roll to win
+            while True:
+                roll = self.roll_dice()
+                if roll == 1:
+                    break
+                if self.current_score + self.scores[self.current_turn] >= 100:
+                    self.hold()
+                    break
+        else:
+            # Keep pace - hold on 21 plus the difference between scores divided by 8
+            target_score = 21 + abs(self.scores[0] - self.scores[1]) // 8
+
+            while self.current_score < target_score:
+                roll = self.roll_dice()
+
+                if roll == 1:
+                    break
+
+                if self.current_score >= target_score:
+                    self.hold()
+                    break
+
     def to_dict(self):
         """
         Converts the PigGame object to a dictionary representation.
