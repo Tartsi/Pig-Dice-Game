@@ -52,6 +52,20 @@ class PigGameTest(TestCase):
         self.assertEqual(self.game.current_turn, 0)
         self.assertEqual(self.game.current_score, 0)
 
+    def test_cpu_move_roll_one(self):
+        # Set up the game state
+        self.game.scores = [50, 50]
+        self.game.current_turn = 1  # CPU is player 1
+        self.game.current_score = 0
+
+        # Mock roll_dice to control the dice roll
+        self.game.roll_dice = lambda: 1
+
+        self.game.cpu_move()
+
+        # Check if CPU stopped on rolling 1
+        self.assertEqual(self.game.current_score, 0)
+
     def test_to_dict(self):
         self.game.scores = [10, 20]
         self.game.current_turn = 1
