@@ -61,28 +61,36 @@ class PigGame():
         which is calculated as 21 plus the absolute difference between
         the scores of the two players divided by 8.
         """
+
+        # Add returns to the end of each condition to make testing easier
+
+        if self.current_turn == 0:
+            return 'not CPU turn'
+
         if self.scores[0] >= 71 or self.scores[1] >= 71:
             # End race - roll to win
             while True:
+
                 roll = self.roll_dice()
+
                 if roll == 1:
-                    break
+                    return 'rolled 1 > 71'
                 if self.current_score + self.scores[self.current_turn] >= 100:
                     self.hold()
-                    break
+                    return 'winning score reached, holding'
         else:
             # Keep pace - hold on 21 plus the difference between scores divided by 8
             target_score = 21 + abs(self.scores[0] - self.scores[1]) // 8
 
             while self.current_score < target_score:
+
                 roll = self.roll_dice()
 
                 if roll == 1:
-                    break
+                    return 'rolled 1 < 71'
 
-                if self.current_score >= target_score:
-                    self.hold()
-                    break
+            self.hold()
+            return 'target score reached, holding'
 
     def to_dict(self):
         """
