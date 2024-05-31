@@ -71,6 +71,24 @@ class PigGameTest(TestCase):
         self.game.roll_dice = lambda: 1
         self.assertEqual(self.game.cpu_move(), 'rolled 1 > 71')
 
+    def test_cpu_end_race(self):
+        self.game.scores = [72, 50]
+        self.game.current_turn = 1
+
+        self.game.current_score = 50
+        self.game.roll_dice = lambda: 2
+        self.assertEqual(self.game.cpu_move(),
+                         'winning score reached, holding')
+
+    def test_cpu_keep_pace(self):
+        self.game.scores = [52, 20]
+        self.game.current_turn = 1
+
+        self.game.current_score = 25
+        self.game.roll_dice = lambda: 2
+        self.assertEqual(self.game.cpu_move(),
+                         'target score reached, holding')
+
     def test_to_dict(self):
         self.game.scores = [10, 20]
         self.game.current_turn = 1
