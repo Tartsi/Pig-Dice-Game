@@ -1,5 +1,7 @@
 'use strict';
 
+
+// Elements
 const player0NameEl = document.getElementById('player0');
 const player1NameEl = document.getElementById('player1');
 const totalScore0El = document.getElementById('score--0');
@@ -7,6 +9,9 @@ const totalScore1El = document.getElementById('score--1');
 const currentScore0El = document.getElementById('current-score--0');
 const currentScore1El = document.getElementById('current-score--1');
 
+/**
+ * Rolls the dice and updates the game state based on the result.
+ */
 const rollDice = () => {
     fetch('/roll')
     .then(response => response.json())
@@ -30,6 +35,9 @@ const rollDice = () => {
     });
 };
 
+/**
+ * Sends a request to the server to hold the current score and updates the game state accordingly.
+ */
 const hold = () => {
     fetch('/hold')
     .then(response => response.json())
@@ -54,6 +62,9 @@ const hold = () => {
     });
 };
 
+/**
+ * Resets the session by making a fetch request to the '/reset' endpoint and redirecting to the home page if successful.
+ */
 const resetSession = () => {
     fetch('/reset')
     .then(response => response.json())
@@ -64,6 +75,9 @@ const resetSession = () => {
     });
 };
 
+/**
+ * Changes the turn by toggling the active class on player names and resetting the current scores.
+ */
 const changeTurn = () => {
     player0NameEl.classList.toggle('active');
     player1NameEl.classList.toggle('active');
@@ -71,6 +85,9 @@ const changeTurn = () => {
     currentScore1El.innerText = 'Current Score: 0';
 };
 
+/**
+ * Restarts the game by making a fetch request to the '/restart' endpoint and updating the game state.
+ */
 const restartGame = () => {
     fetch('/restart')
     .then(response => response.json())
