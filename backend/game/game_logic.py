@@ -62,10 +62,10 @@ class PigGame():
         the scores of the two players divided by 8.
         """
 
-        # Add returns to the end of each condition to make testing easier
+        # Add returns with explanations to the end of each condition to make testing easier
 
         if self.current_turn == 0:
-            return 'not CPU turn'
+            return 'not CPU turn', roll
 
         if self.scores[0] >= 71 or self.scores[1] >= 71:
             # End race - roll to win
@@ -73,10 +73,10 @@ class PigGame():
             roll = self.roll_dice()
 
             if roll == 1:
-                return 'rolled 1 > 71'
+                return 'rolled 1 > 71', roll
             if self.current_score + self.scores[self.current_turn] >= 100:
                 self.hold()
-                return 'winning score reached, holding'
+                return 'winning score reached, holding', roll
 
         else:
             # Keep pace - hold on 21 plus the difference between scores divided by 8
@@ -85,11 +85,13 @@ class PigGame():
             roll = self.roll_dice()
 
             if roll == 1:
-                return 'rolled 1 < 71'
+                return 'rolled 1 < 71', roll
 
             if self.current_score >= target_score:
                 self.hold()
-                return 'target score reached, holding'
+                return 'target score reached, holding', roll
+
+        return 'no specific conditions met', roll
 
     def to_dict(self):
         """
