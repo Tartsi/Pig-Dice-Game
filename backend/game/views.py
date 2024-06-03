@@ -101,7 +101,13 @@ def roll_dice(request):
         print('No game session!')
         return JsonResponse({'status': 'error, no game session found!'})
 
-    dice_roll = game.roll_dice()
+    if game.current_turn == 0:
+        dice_roll = game.roll_dice()
+    else:
+        # CPU player's turn, this method includes rolling the dice and holding the score
+        # TODO: Need to exctract the dice roll result from the cpu_move method
+        result = game.cpu_move()
+
     request.session['game'] = game.to_dict()
 
     response = {
