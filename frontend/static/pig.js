@@ -33,8 +33,10 @@ const rollDice = () => {
             document.getElementById('dice-pic').src = `/static/assets/dice-${roll}.png`;
 
             // If it is the computer's turn, add 2 seconds delay on computer dice rolls
+            // TODO: FIX CPU MOVE
             if (data.current_turn === 1 || player1NameEl.classList.contains('active')) {
-                setTimeout(rollDice, 2000);
+                setTimeout(rollDice(), 2000);
+                console.log('Computer rolled a ' + roll);
             }
         }
     });

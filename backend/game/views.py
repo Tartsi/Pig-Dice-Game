@@ -105,7 +105,9 @@ def roll_dice(request):
         dice_roll = game.roll_dice()
     else:
         # CPU player's turn, this method includes rolling the dice and holding the score
+        # TODO: FIX CPU MOVE
         message, dice_roll = game.cpu_move()
+        print('Turn', game.current_turn)
         print(f"CPU: {message} move: {dice_roll}")
 
     request.session['game'] = game.to_dict()
