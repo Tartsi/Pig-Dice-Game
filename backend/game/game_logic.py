@@ -65,7 +65,7 @@ class PigGame():
         # Add returns with explanations to the end of each condition to make testing easier
 
         if self.current_turn == 0:
-            return 'not CPU turn', roll
+            return 'not CPU turn'
 
         if self.scores[0] >= 71 or self.scores[1] >= 71:
             # End race - roll to win

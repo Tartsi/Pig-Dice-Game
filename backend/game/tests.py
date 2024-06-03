@@ -62,14 +62,14 @@ class PigGameTest(TestCase):
 
         # Mock roll_dice to control the dice roll
         self.game.roll_dice = lambda: 1
-        self.assertEqual(self.game.cpu_move(), 'rolled 1 < 71')
+        self.assertEqual(self.game.cpu_move(), ('rolled 1 < 71', 1))
 
     def test_cpu_move_roll_one_more_than_71(self):
         self.game.scores = [72, 50]
         self.game.current_turn = 1
 
         self.game.roll_dice = lambda: 1
-        self.assertEqual(self.game.cpu_move(), 'rolled 1 > 71')
+        self.assertEqual(self.game.cpu_move(), ('rolled 1 > 71', 1))
 
     def test_cpu_end_race(self):
         self.game.scores = [72, 50]
@@ -78,7 +78,7 @@ class PigGameTest(TestCase):
         self.game.current_score = 50
         self.game.roll_dice = lambda: 2
         self.assertEqual(self.game.cpu_move(),
-                         'winning score reached, holding')
+                         ('winning score reached, holding', 2))
 
     def test_cpu_keep_pace(self):
         self.game.scores = [52, 20]
@@ -87,7 +87,7 @@ class PigGameTest(TestCase):
         self.game.current_score = 25
         self.game.roll_dice = lambda: 2
         self.assertEqual(self.game.cpu_move(),
-                         'target score reached, holding')
+                         ('target score reached, holding', 2))
 
     def test_to_dict(self):
         self.game.scores = [10, 20]
