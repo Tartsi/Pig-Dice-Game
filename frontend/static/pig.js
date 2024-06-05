@@ -32,10 +32,16 @@ const rollDice = () => {
             playerCurrentScoreEl.innerText = `Current Score: ${currentScore}`;
             document.getElementById('dice-pic').src = `/static/assets/dice-${roll}.png`;
 
-            // If it is the computer's turn, add 2 seconds delay on computer dice rolls
-            // TODO: FIX CPU MOVE
+            // If it is the computer's turn, add delay on computer dice rolls
             if (data.current_turn === 1 || player1NameEl.classList.contains('active')) {
-                setTimeout(rollDice(), 2000);
+
+                if (data.message) {
+                    setTimeout(hold, 2000);
+                    console.log('Computer holding at ' + currentScore);
+                    return;
+                }
+
+                setTimeout(rollDice, 2000);
                 console.log('Computer rolled a ' + roll);
             }
         }
