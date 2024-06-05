@@ -75,11 +75,10 @@ class PigGame():
             if roll == 1:
                 return 'rolled 1 > 71', roll
             if self.current_score + self.scores[self.current_turn] >= 100:
-                self.hold()
                 return 'winning score reached, holding', roll
 
         else:
-            # Keep pace - hold on 21 plus the difference between scores divided by 8
+            # Keep pace - holds on 21 plus the difference between scores divided by 8
             target_score = 21 + abs(self.scores[0] - self.scores[1]) // 8
 
             roll = self.roll_dice()
@@ -88,7 +87,6 @@ class PigGame():
                 return 'rolled 1 < 71', roll
 
             if self.current_score >= target_score:
-                self.hold()
                 return 'target score reached, holding', roll
 
         return 'no specific conditions met', roll
