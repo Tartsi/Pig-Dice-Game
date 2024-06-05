@@ -16,7 +16,8 @@ disable=raw-checker-failed,
         invalid-str-returned,
         no-member,
         import-outside-toplevel,
-        fixme
+        fixme,
+        consider-using-in
 
 [FORMAT]
 max-line-length = 100
