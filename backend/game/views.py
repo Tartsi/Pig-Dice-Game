@@ -104,11 +104,24 @@ def roll_dice(request):
     if game.current_turn == 0:
         dice_roll = game.roll_dice()
     else:
-        # CPU player's turn, this method includes rolling the dice and holding the score
-        # TODO: FIX CPU MOVE
+        # CPU player's turn, this method includes rolling the dice and making a move
         message, dice_roll = game.cpu_move()
-        print('Turn', game.current_turn)
-        print(f"CPU: {message} move: {dice_roll}")
+
+        print('CPU move:', message, dice_roll)
+
+        if message in ['target score reached, holding', 'winning score reached, holding']:
+
+            request.session['game'] = game.to_dict()
+
+            response = {
+                'status': 'success',
+                'roll': dice_roll,
+                'current_score': game.current_score,
+                'current_turn': game.current_turn,
+                'message': True
+            }
+
+            return JsonResponse(response)
 
     request.session['game'] = game.to_dict()
 
