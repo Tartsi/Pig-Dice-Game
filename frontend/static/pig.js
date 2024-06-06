@@ -58,10 +58,13 @@ const hold = () => {
         if (data.status === 'success') {
 
             const playerTotalScoreEl = document.getElementById(`score--${data.current_turn}`);
+            const playerCurrentScoreEl = document.getElementById(`current-score--${data.current_turn}`);
             const totalScore = data.scores[data.current_turn];
 
             if (totalScore >= 100) {
                 const winnerEl = document.getElementById(`player${data.current_turn}`);
+                playerCurrentScoreEl.innerText = 'Current Score: 0';
+                playerTotalScoreEl.innerText = `${totalScore}`;
                 winnerEl.classList.add('winner');
                 winnerEl.appendChild(document.createTextNode('🎉 Winner! 🎉'));
                 player0NameEl.classList.remove('active');
