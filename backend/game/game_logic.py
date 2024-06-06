@@ -9,6 +9,7 @@ class PigGame():
         self.scores = [0, 0]  # index-0 is player 1, index-1 is player 2
         self.current_turn = 0  # 0 always goes first
         self.current_score = 0
+        self.vs_cpu = False
 
     def roll_dice(self):
         """
@@ -96,27 +97,29 @@ class PigGame():
         Converts the PigGame object to a dictionary representation.
 
         Returns:
-            dict: A dictionary containing the scores, current turn, and current score.
+            dict: A dictionary containing the scores, current turn, current score, and is_cpu flag.
         """
         return {
             'scores': self.scores,
             'current_turn': self.current_turn,
-            'current_score': self.current_score
+            'current_score': self.current_score,
+            'vs_cpu': self.vs_cpu
         }
 
     @classmethod
     def from_dict(cls, data):
         """
-        Creates a new instance of the PigGame class from a dictionary representation.
+        Creates a new PigGame object from a dictionary representation.
 
         Args:
-            data (dict): A dictionary containing the scores, current turn, and current score.
+            data (dict): Dictionary containing scores, current turn and score, and vs_cpu flag.
 
         Returns:
-            PigGame: A new instance of the PigGame class.
+            PigGame: New instance of PigGame-class initialized with the values from the dictionary.
         """
         game = cls()
         game.scores = data['scores']
         game.current_turn = data['current_turn']
         game.current_score = data['current_score']
+        game.vs_cpu = data['vs_cpu']
         return game
