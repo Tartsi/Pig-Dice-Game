@@ -89,6 +89,15 @@ class PigGameTest(TestCase):
         self.assertEqual(self.game.cpu_move(),
                          ('target score reached, holding', 2))
 
+    def test_cpu_roll_no_conditions_met(self):
+        self.game.scores = [10, 10]
+        self.game.current_turn = 1
+
+        self.game.current_score = 2
+        self.game.roll_dice = lambda: 2
+        self.assertEqual(self.game.cpu_move(),
+                         ('no specific conditions met', 2))
+
     def test_to_dict(self):
         self.game.scores = [10, 20]
         self.game.current_turn = 1
