@@ -136,6 +136,11 @@ body {
     background-color: #c0392b;
 }
 
+.btn.disabled {
+    background-color: #7a7a7a;
+    cursor: not-allowed;
+}
+
 /* Winner Highlight */
 .winner {
     background-color: #27ae60 !important;

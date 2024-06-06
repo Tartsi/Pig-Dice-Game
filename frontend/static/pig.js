@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Elements
 const player0NameEl = document.getElementById('player0');
 const player1NameEl = document.getElementById('player1');
@@ -8,6 +7,9 @@ const totalScore0El = document.getElementById('score--0');
 const totalScore1El = document.getElementById('score--1');
 const currentScore0El = document.getElementById('current-score--0');
 const currentScore1El = document.getElementById('current-score--1');
+const rollButton = document.querySelector('.btn.roll');
+const holdButton = document.querySelector('.btn.hold');
+const restartButton = document.querySelector('.btn.restart');
 
 /**
  * Rolls the dice and updates the game state based on the result.
@@ -34,6 +36,7 @@ const rollDice = () => {
 
             // If it is the computer's turn, add delay on computer dice rolls
             if (data.current_turn === 1 || player1NameEl.classList.contains('active')) {
+                disableButtons();
 
                 if (data.message) {
                     setTimeout(hold, 2000);
@@ -43,6 +46,8 @@ const rollDice = () => {
 
                 setTimeout(rollDice, 2000);
                 console.log('Computer rolled a ' + roll);
+            } else {
+                enableButtons();
             }
         }
     });
@@ -70,6 +75,7 @@ const hold = () => {
                 player0NameEl.classList.remove('active');
                 player1NameEl.classList.remove('active');
                 document.getElementById('dice-pic').src = '/static/assets/dice-1.png';
+                disableButtons();
             } else {
                 playerTotalScoreEl.innerText = `${totalScore}`;
                 changeTurn();
@@ -99,6 +105,12 @@ const changeTurn = () => {
     player1NameEl.classList.toggle('active');
     currentScore0El.innerText = 'Current Score: 0';
     currentScore1El.innerText = 'Current Score: 0';
+
+    if (player1NameEl.classList.contains('active')) {
+        disableButtons();
+    } else {
+        enableButtons();
+    }
 };
 
 /**
@@ -129,7 +141,33 @@ const restartGame = () => {
             }
 
             document.getElementById('dice-pic').src = '/static/assets/dice-1.png';
-
+            enableButtons();
         }
     });
+};
+
+/**
+ * Disables the roll, hold, and restart buttons with a visual cue.
+ */
+const disableButtons = () => {
+    rollButton.disabled = true;
+    holdButton.disabled = true;
+    restartButton.disabled = true;
+
+    rollButton.classList.add('disabled');
+    holdButton.classList.add('disabled');
+    restartButton.classList.add('disabled');
+};
+
+/**
+ * Enables the roll, hold, and restart buttons.
+ */
+const enableButtons = () => {
+    rollButton.disabled = false;
+    holdButton.disabled = false;
+    restartButton.disabled = false;
+
+    rollButton.classList.remove('disabled');
+    holdButton.classList.remove('disabled');
+    restartButton.classList.remove('disabled');
 };
