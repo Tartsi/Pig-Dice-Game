@@ -23,12 +23,21 @@
             <button class="btn roll" onclick="rollDice()">🎲 Roll Dice 🎲</button>
             <button class="btn hold" onclick="hold()">📥 Hold 📥</button>
         </div>
-        <div class="player-score" id="player1">
-            <h2>Player 2</h2>
-            <div class="score" id="score--1">0</div>
-            <div class="current-score" id="current-score--1">Current Score: 0</div>
-            <br>
-        </div>
+        {% if vs_cpu %}
+            <div class="player-score" id="player1">
+                <h2>CPU</h2>
+                <div class="score" id="score--1">0</div>
+                <div class="current-score" id="current-score--1">Current Score: 0</div>
+                <br>
+            </div>
+        {% else %}
+            <div class="player-score" id="player1">
+                <h2>Player 2</h2>
+                <div class="score" id="score--1">0</div>
+                <div class="current-score" id="current-score--1">Current Score: 0</div>
+                <br>
+            </div>
+        {% endif %}
     </div>
 
     <script src="/static/pig.js"></script>
