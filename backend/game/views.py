@@ -16,7 +16,7 @@ def index(request):
     return render(request, 'index.html')
 
 
-def pig_view(request):
+def pig_human_view(request):
     """
     Renders the 'pig.html' template and initializes a new game session.
 
@@ -29,6 +29,27 @@ def pig_view(request):
 
     if 'game' not in request.session:
         request.session['game'] = PigGame().to_dict()
+
+    return render(request, 'pig.html')
+
+
+def pig_cpu_view(request):
+    """
+    Renders the 'pig.html' template and initializes a new game session with vs_cpu-flag turned on.
+
+    Parameters:
+    - request: The HTTP request object.
+
+    Returns:
+    - A rendered HTML response
+    """
+
+    if 'game' not in request.session:
+        request.session['game'] = PigGame().to_dict()
+
+    game = PigGame.from_dict(request.session['game'])
+    game.vs_cpu = True
+    request.session['game'] = game.to_dict()
 
     return render(request, 'pig.html')
 
