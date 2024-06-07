@@ -40,12 +40,10 @@ const rollDice = () => {
 
                 if (data.message) {
                     setTimeout(hold, 2000);
-                    console.log('Computer holding at ' + currentScore);
                     return;
                 }
 
                 setTimeout(rollDice, 2000);
-                console.log('Computer rolled a ' + roll);
             } else {
                 enableButtons();
             }
@@ -76,9 +74,14 @@ const hold = () => {
                 player1NameEl.classList.remove('active');
                 document.getElementById('dice-pic').src = '/static/assets/dice-1.png';
                 disableButtons();
+                return;
             } else {
                 playerTotalScoreEl.innerText = `${totalScore}`;
                 changeTurn();
+
+                if (player1NameEl.classList.contains('active')) {
+                    setTimeout(rollDice, 2000);
+                }
             }
         }
     });
