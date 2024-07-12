@@ -98,7 +98,8 @@ def restart(request):
         'status': 'success',
         'scores': game.scores,
         'current_score': game.current_score,
-        'current_turn': game.current_turn
+        'current_turn': game.current_turn,
+        'vs_cpu': game.vs_cpu
     }
 
     return JsonResponse(response)
@@ -122,7 +123,7 @@ def roll_dice(request):
         print('No game session!')
         return JsonResponse({'status': 'error, no game session found!'})
 
-    if game.current_turn == 0:
+    if game.current_turn == 0 or game.current_turn == 1 and not game.vs_cpu:
         dice_roll = game.roll_dice()
     else:
         # CPU player's turn, this method includes rolling the dice and making a move
@@ -139,7 +140,8 @@ def roll_dice(request):
                 'roll': dice_roll,
                 'current_score': game.current_score,
                 'current_turn': game.current_turn,
-                'message': True
+                'message': True,
+                'vs_cpu': game.vs_cpu
             }
 
             return JsonResponse(response)
@@ -150,7 +152,8 @@ def roll_dice(request):
         'status': 'success',
         'roll': dice_roll,
         'current_score': game.current_score,
-        'current_turn': game.current_turn
+        'current_turn': game.current_turn,
+        'vs_cpu': game.vs_cpu
     }
 
     return JsonResponse(response)
@@ -183,7 +186,8 @@ def hold(request):
     response = {
         'status': 'success',
         'scores': game.scores,
-        'current_turn': game.current_turn
+        'current_turn': game.current_turn,
+        'vs_cpu': game.vs_cpu
     }
 
     return JsonResponse(response)
