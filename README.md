@@ -14,3 +14,6 @@
 - This project will have a backend using Python (Django), with the frontend developed using HTML, CSS and JavaScript.
 
 - The game has the option of playing vs CPU or vs a human player (locally).
+
+- As of 12.07.2024 the game has its first playable version
+    - Potential bugs and errors may still be present and the games outlook will be updated further.
