@@ -17,3 +17,4 @@
 
 - As of 12.07.2024 the game has its first playable version
     - Potential bugs and errors may still be present and the games outlook will be updated further.
+    - 15.07.2024 Bug identified that crashed the latest release (v.1.0.0), working to fix it! 
