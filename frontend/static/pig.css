@@ -56,15 +56,23 @@ body {
 }
 
 /* Indicator for Active Player */
-.player-score.active::before {
-    content: ' ';
-    width: 20px;
-    height: 20px;
-    background-color: #23a01a;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.player-score.active {
+    background-color: #2980b9;
+    box-shadow: 0 0 20px #2980b9;
+    animation: pulsate 3s infinite;
+    transform: scale(1.1);
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Game Board Section */
