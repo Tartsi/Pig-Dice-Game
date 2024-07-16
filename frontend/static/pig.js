@@ -31,7 +31,7 @@ const rollDice = () => {
                 changeTurn(data.vs_cpu);
             }
 
-            showRollBonus(data.current_turn, roll);
+            showDiceRollVisual(data.current_turn, roll);
             playerCurrentScoreEl.innerText = `Current Score: ${currentScore}`;
             document.getElementById('dice-pic').src = `/static/assets/dice-${roll}.png`;
 
@@ -57,7 +57,7 @@ const rollDice = () => {
 /**
  * Shows the rolled dice number as a quickly fading number.
  */
-function showRollBonus(player_turn, rolled_number) {
+function showDiceRollVisual(player_turn, rolled_number) {
 
     if (rolled_number === 1) {
 
