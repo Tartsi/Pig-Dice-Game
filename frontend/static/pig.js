@@ -31,6 +31,7 @@ const rollDice = () => {
                 changeTurn(data.vs_cpu);
             }
 
+            showRollBonus(data.current_turn, roll);
             playerCurrentScoreEl.innerText = `Current Score: ${currentScore}`;
             document.getElementById('dice-pic').src = `/static/assets/dice-${roll}.png`;
 
@@ -52,6 +53,37 @@ const rollDice = () => {
         }
     });
 };
+
+/**
+ * Shows the rolled dice number as a quickly fading number above the player's scores.
+ */
+function showRollBonus(player_turn, rolled_number) {
+
+    if (rolled_number === 1) {
+        return;
+    }
+
+    const playerDiv = document.getElementById(`player${player_turn}`);
+    const bonusEl = document.createElement('div');
+    bonusEl.textContent = `+${rolled_number}`;
+    bonusEl.style.position = 'absolute';
+    bonusEl.style.top = '-60px';
+    bonusEl.style.left = '50%';
+    bonusEl.style.transform = 'translateX(-50%)';
+    bonusEl.style.fontSize = '2.5rem';
+    bonusEl.style.color = 'green';
+    bonusEl.style.opacity = '1';
+    bonusEl.style.transition = 'opacity 0.5s ease, top 0.5s ease';
+
+    playerDiv.appendChild(bonusEl);
+
+    // Fade out the bonus element
+    setTimeout(() => {
+        bonusEl.style.opacity = '0';
+        bonusEl.style.top = '-80px';
+        setTimeout(() => bonusEl.remove(), 500);
+    }, 500);
+}
 
 /**
  * Sends a request to the server to hold the current score and updates the game state accordingly.
