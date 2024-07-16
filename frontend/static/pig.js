@@ -55,11 +55,35 @@ const rollDice = () => {
 };
 
 /**
- * Shows the rolled dice number as a quickly fading number above the player's scores.
+ * Shows the rolled dice number as a quickly fading number.
  */
 function showRollBonus(player_turn, rolled_number) {
 
     if (rolled_number === 1) {
+
+        // Change the player turn if the rolled number is 1 to display the effect above the correct player
+        const otherPlayerDiv = document.getElementById(`player${player_turn === 0 ? 1 : 0}`);
+
+        const oneEl = document.createElement('div');
+        oneEl.textContent = '-1';
+        oneEl.style.position = 'absolute';
+        oneEl.style.bottom = '-60px';
+        oneEl.style.left = '50%';
+        oneEl.style.transform = 'translateX(-50%)';
+        oneEl.style.fontSize = '2.5rem';
+        oneEl.style.color = 'red';
+        oneEl.style.opacity = '1';
+        oneEl.style.transition = 'opacity 0.5s ease, bottom 0.5s ease';
+
+        otherPlayerDiv.appendChild(oneEl);
+
+        // Fade out the one element
+        setTimeout(() => {
+            oneEl.style.opacity = '0';
+            oneEl.style.bottom = '-80px';
+            setTimeout(() => oneEl.remove(), 500);
+        }, 500);
+
         return;
     }
 
