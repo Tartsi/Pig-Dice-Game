@@ -55,58 +55,42 @@ const rollDice = () => {
 };
 
 /**
+ * Helper function to create and animate an element that fades out and moves to a new position.
+ */
+function createAndAnimateElement(parentDiv, textContent, startPos, endPos, color) {
+    const el = document.createElement('div');
+    el.textContent = textContent;
+    el.style.position = 'absolute';
+    el.style[startPos.direction] = startPos.value;
+    el.style.left = '50%';
+    el.style.transform = 'translateX(-50%)';
+    el.style.fontSize = '2.5rem';
+    el.style.color = color;
+    el.style.opacity = '1';
+    el.style.transition = 'opacity 0.5s ease, ' + startPos.direction + ' 0.5s ease';
+
+    parentDiv.appendChild(el);
+
+    // Fade out the element
+    setTimeout(() => {
+        el.style.opacity = '0';
+        el.style[startPos.direction] = endPos.value;
+        setTimeout(() => el.remove(), 500);
+    }, 500);
+}
+
+/**
  * Shows the rolled dice number as a quickly fading number.
  */
 function showDiceRollVisual(player_turn, rolled_number) {
-
     if (rolled_number === 1) {
-
         // Change the player turn if the rolled number is 1 to display the effect above the correct player
         const otherPlayerDiv = document.getElementById(`player${player_turn === 0 ? 1 : 0}`);
-
-        const oneEl = document.createElement('div');
-        oneEl.textContent = '-1';
-        oneEl.style.position = 'absolute';
-        oneEl.style.bottom = '-60px';
-        oneEl.style.left = '50%';
-        oneEl.style.transform = 'translateX(-50%)';
-        oneEl.style.fontSize = '2.5rem';
-        oneEl.style.color = 'red';
-        oneEl.style.opacity = '1';
-        oneEl.style.transition = 'opacity 0.5s ease, bottom 0.5s ease';
-
-        otherPlayerDiv.appendChild(oneEl);
-
-        // Fade out the one element
-        setTimeout(() => {
-            oneEl.style.opacity = '0';
-            oneEl.style.bottom = '-80px';
-            setTimeout(() => oneEl.remove(), 500);
-        }, 500);
-
-        return;
+        createAndAnimateElement(otherPlayerDiv, '-1', {direction: 'bottom', value: '-60px'}, {value: '-80px'}, 'red');
+    } else {
+        const playerDiv = document.getElementById(`player${player_turn}`);
+        createAndAnimateElement(playerDiv, `+${rolled_number}`, {direction: 'top', value: '-60px'}, {value: '-80px'}, 'green');
     }
-
-    const playerDiv = document.getElementById(`player${player_turn}`);
-    const bonusEl = document.createElement('div');
-    bonusEl.textContent = `+${rolled_number}`;
-    bonusEl.style.position = 'absolute';
-    bonusEl.style.top = '-60px';
-    bonusEl.style.left = '50%';
-    bonusEl.style.transform = 'translateX(-50%)';
-    bonusEl.style.fontSize = '2.5rem';
-    bonusEl.style.color = 'green';
-    bonusEl.style.opacity = '1';
-    bonusEl.style.transition = 'opacity 0.5s ease, top 0.5s ease';
-
-    playerDiv.appendChild(bonusEl);
-
-    // Fade out the bonus element
-    setTimeout(() => {
-        bonusEl.style.opacity = '0';
-        bonusEl.style.top = '-80px';
-        setTimeout(() => bonusEl.remove(), 500);
-    }, 500);
 }
 
 /**
