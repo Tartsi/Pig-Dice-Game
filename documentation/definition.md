@@ -1,20 +1,30 @@
-### Requirements Definition for the project:
+# Requirements Definition for the project:
 
-#### Introduction
+### Game Setup
 
-The Pig Dice Game is a simple, turn-based dice game where players aim to be the first to reach 100 points. This project involves developing a web-based version of the game with both single-player (vs. CPU) and local multiplayer (vs. human player) modes. The backend will be implemented using Python (Django), while the frontend will be developed using HTML, CSS, and JavaScript.
+- The game shall provide option to play against a CPU opponent or another human player locally.
+- The user shall be able to start a new game from the index-page or restart the current game during gameplay.
 
-- User can roll a normal 1-6 dice.
-  - Users roll will be added to current points. These points are reset if the user rolls 1, and the turn changes. 
+### User Interface
 
-- User can hold a turn and receive current points gathered in the turn, which are then added to total points.
+- The game shall have a graphical user interface (GUI) with the following - elements:
+  - Display of current player’s name, roll result, turn points (current score), and total accumulated points.
+  - Buttons for "Roll", "Hold", "Quit" and "Restart".
+  - Display of opponent’s total points.
+  - The user shall receive visual feedback for actions (e.g., dice roll result, - score updates).
+  - The interface shall indicate the current player's turn.
 
-- First player to reach 100 points or over wins the game!
+### Game Mechanics
 
-- This project will have a backend using Python (Django), with the frontend developed using HTML, CSS and JavaScript.
+- The game shall simulate rolling a six-sided die.
+- The game shall automatically handle turn transitions and score calculations.
+- The game shall provide an option to restart the game anytime during gameplay.
 
-- The game has the option of playing vs CPU or vs a human player (locally).
+### AI Behavior
+
+- The game shall include a CPU opponent with a predefined strategy when deciding moves.
+  - This predefined strategy is determined to be the best possible strategy against 'optimal play', thus proving a similar challenge for more experienced players and newcomers alike.
 
 #### Conclusion
 
-This requirements definition outlines the essential features and functionalities for developing a small-scale, web-based Pig Dice Game. The use of Python (Django) for the backend and HTML, CSS, and JavaScript for the frontend will provide a solid foundation for building and maintaining the game.
+This requirements definition outlines the essential features and functionalities for developing a small-scale, web-based Pig Dice Game that is engaging and fun to play. The use of Python (Django) for the backend and HTML, CSS, and JavaScript for the frontend will provide a solid foundation for building and maintaining the game.
