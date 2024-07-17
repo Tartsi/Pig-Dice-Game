@@ -94,6 +94,51 @@ function showDiceRollVisual(player_turn, rolled_number) {
 }
 
 /**
+ * Shows the held score number as a quickly fading number.
+ */
+function showHeldScoreVisual(player_turn, held_number) {
+    const playerDiv = document.getElementById(`player${player_turn}`);
+
+    // Create the element to display the score being added
+    const scoreEl = document.createElement('div');
+    scoreEl.textContent = `+${held_number}`;
+    scoreEl.style.position = 'absolute';
+    scoreEl.style.top = '85px';
+    scoreEl.style.fontSize = '2.5rem';
+    scoreEl.style.color = 'green';
+    scoreEl.style.opacity = '1';
+
+    // Set initial and final positions based on player turn
+    if (player_turn === 0) {
+        scoreEl.style.transition = 'opacity 1s ease, left 1s ease';
+        scoreEl.style.left = '65%';
+        scoreEl.style.transform = 'translateX(10px)';
+        setTimeout(() => {
+            scoreEl.style.opacity = '0';
+            scoreEl.style.left = '50%';
+            scoreEl.style.transform = 'translateX(-50%)';
+            setTimeout(() => {
+                scoreEl.remove();
+            }, 1000);
+        }, 1000);
+    } else {
+        scoreEl.style.transition = 'opacity 1s ease, right 1s ease';
+        scoreEl.style.right = '65%';
+        scoreEl.style.transform = 'translateX(-10px)';
+        setTimeout(() => {
+            scoreEl.style.opacity = '0';
+            scoreEl.style.right = '50%';
+            scoreEl.style.transform = 'translateX(50%)';
+            setTimeout(() => {
+                scoreEl.remove();
+            }, 1000);
+        }, 1000);
+    }
+
+    playerDiv.appendChild(scoreEl);
+}
+
+/**
  * Sends a request to the server to hold the current score and updates the game state accordingly.
  */
 const hold = () => {
@@ -105,6 +150,8 @@ const hold = () => {
             const playerTotalScoreEl = document.getElementById(`score--${data.current_turn}`);
             const playerCurrentScoreEl = document.getElementById(`current-score--${data.current_turn}`);
             const totalScore = data.scores[data.current_turn];
+
+            showHeldScoreVisual(data.current_turn, parseInt(playerCurrentScoreEl.innerText.split(':')[1].trim()));
 
             if (totalScore >= 100) {
                 const winnerEl = document.getElementById(`player${data.current_turn}`);
