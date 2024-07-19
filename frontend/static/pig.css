@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+
 /* General */
 body {
     background-color: #1b1b1b;
-    font-family: Arial, sans-serif;
+    font-family: 'Audiowide', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,6 +99,11 @@ body {
 }
 
 /* Buttons */
+.btn {
+    font-family: 'Audiowide', cursive;
+    font-weight: bold;
+}
+
 .btn.restart {
     position: absolute;
     top: 10px;
