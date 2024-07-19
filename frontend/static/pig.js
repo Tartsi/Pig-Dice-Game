@@ -153,12 +153,15 @@ const hold = () => {
 
             showHeldScoreVisual(data.current_turn, parseInt(playerCurrentScoreEl.innerText.split(':')[1].trim()));
 
-            if (totalScore >= 100) {
+            if (totalScore >= 10) {
                 const winnerEl = document.getElementById(`player${data.current_turn}`);
+                const loserEl = document.getElementById(`player${data.current_turn === 0 ? 1 : 0}`);
                 playerCurrentScoreEl.innerText = 'Current Score: 0';
                 playerTotalScoreEl.innerText = `${totalScore}`;
                 winnerEl.classList.add('winner');
+                loserEl.classList.add('loser');
                 winnerEl.appendChild(document.createTextNode('🎉 Winner! 🎉'));
+                loserEl.appendChild(document.createTextNode('😡 Loser! 😡'));
                 player0NameEl.classList.remove('active');
                 player1NameEl.classList.remove('active');
                 document.getElementById('dice-pic').src = '/static/assets/dice-1.png';
@@ -225,12 +228,16 @@ const restartGame = () => {
             player1NameEl.classList.remove('active');
             player0NameEl.classList.remove('winner');
             player1NameEl.classList.remove('winner');
+            player0NameEl.classList.remove('loser');
+            player1NameEl.classList.remove('loser');
 
-            if (player0NameEl.lastChild.textContent === '🎉 Winner! 🎉') {
+            if (player0NameEl.lastChild.textContent === '🎉 Winner! 🎉' ||
+                player0NameEl.lastChild.textContent === '😡 Loser! 😡') {
                 player0NameEl.removeChild(player0NameEl.lastChild);
             }
 
-            if (player1NameEl.lastChild.textContent === '🎉 Winner! 🎉') {
+            if (player1NameEl.lastChild.textContent === '🎉 Winner! 🎉' ||
+                player1NameEl.lastChild.textContent === '😡 Loser! 😡') {
                 player1NameEl.removeChild(player1NameEl.lastChild);
             }
 
