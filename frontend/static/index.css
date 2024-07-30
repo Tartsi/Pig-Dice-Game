@@ -32,6 +32,36 @@ h2 {
     text-shadow: 2px 2px 4px #000000;
 }
 
+/* Dice-animation */
+#dice-container {
+    position: relative;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    animation: move-and-rotate 10s infinite;
+}
+
+#dice {
+    width: 100px;
+    height: 100px;
+    background-image: url('/static/assets/dice-6-index.png');
+    background-size: 100px 100px;
+}
+
+
+@keyframes move-and-rotate {
+    0% {
+        transform: translateX(-200px) rotate(0deg);
+    }
+    50% {
+        transform: translateX(0px) rotate(180deg);
+    }
+    100% {
+        transform: translateX(200px) rotate(360deg);
+    }
+}
+
 /* Button Styles */
 .option {
     width: 250px;
