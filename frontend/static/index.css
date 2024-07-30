@@ -53,10 +53,26 @@ h2 {
 
 
 .option:hover {
-    transform: scale(1.15) !important;
+    transform: scale(1.15);
     box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.4);
     background-color: #00ff00;
     color: #ff0000;
+    animation: hover-animation 2s infinite;
+}
+
+@keyframes hover-animation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    }
 }
 
 
