@@ -153,7 +153,7 @@ const hold = () => {
 
             showHeldScoreVisual(data.current_turn, parseInt(playerCurrentScoreEl.innerText.split(':')[1].trim()));
 
-            if (totalScore >= 10) {
+            if (totalScore >= 100) {
                 const winnerEl = document.getElementById(`player${data.current_turn}`);
                 const loserEl = document.getElementById(`player${data.current_turn === 0 ? 1 : 0}`);
                 playerCurrentScoreEl.innerText = 'Current Score: 0';
