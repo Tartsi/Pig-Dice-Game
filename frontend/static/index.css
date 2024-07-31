@@ -54,11 +54,17 @@ h2 {
     0% {
         transform: translateX(-200px) rotate(0deg);
     }
+    25% {
+        transform: translateX(0px) rotate(180deg);
+    }
     50% {
+        transform: translateX(200px) rotate(360deg);
+    }
+    75% {
         transform: translateX(0px) rotate(180deg);
     }
     100% {
-        transform: translateX(200px) rotate(360deg);
+        transform: translateX(-200px) rotate(0deg);
     }
 }
 
