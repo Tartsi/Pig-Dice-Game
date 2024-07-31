@@ -51,7 +51,7 @@ def pig_cpu_view(request):
     game.vs_cpu = True
     request.session['game'] = game.to_dict()
 
-    return render(request, 'pig.html')
+    return render(request, 'pig.html', {'vs_cpu': True})
 
 
 def reset(request):
