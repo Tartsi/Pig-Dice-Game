@@ -17,7 +17,18 @@
             <br>
         </div>
         <div class="game-board">
-            <button class="btn help" onclick="showHelp()">❔</button>
+            <button id="helpButton" class="btn help">❔</button>
+            <div id="helpModal" class="help-modal">
+                <div class="help-modal-content">
+                    <h2>How to Play</h2>
+                    <p>🎲 Roll the dice to add to your current score. If you roll a 1, you lose your current score.</p>
+                    <p>📥 Hold to add your current score to your total score.</p>
+                    <p>🔄 Restart to start a new game.</p>
+                    <p>🛑 Quit to end the game.</p>
+                    <br>
+                    <h2>Have fun! 😁</h2>
+                </div>
+            </div>
             <div class="dice">
             <img id="dice-pic" src="/static/assets/dice-1.png" alt="Dice">
             </div>

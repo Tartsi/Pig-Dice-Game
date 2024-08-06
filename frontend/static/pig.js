@@ -10,6 +10,8 @@ const currentScore1El = document.getElementById('current-score--1');
 const rollButton = document.querySelector('.btn.roll');
 const holdButton = document.querySelector('.btn.hold');
 const restartButton = document.querySelector('.btn.restart');
+const helpButton = document.getElementById('helpButton');
+const helpModal = document.getElementById('helpModal');
 
 /**
  * Rolls the dice and updates the game state based on the result.
@@ -275,3 +277,23 @@ const enableButtons = () => {
     holdButton.classList.remove('disabled');
     restartButton.classList.remove('disabled');
 };
+
+/**
+ * Event listeners for the help-button hover effect, controlling the modal.
+ */
+helpButton.addEventListener('mouseenter', () => {
+    helpModal.style.display = 'block';
+});
+
+helpButton.addEventListener('mouseleave', () => {
+    // Set a timeout to ensure user has moved to the modal
+    setTimeout(() => {
+        if (!helpModal.matches(':hover')) {
+            helpModal.style.display = 'none';
+        }
+    }, 200);
+});
+
+helpModal.addEventListener('mouseleave', () => {
+    helpModal.style.display = 'none';
+});

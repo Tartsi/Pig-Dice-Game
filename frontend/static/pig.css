@@ -175,6 +175,11 @@ body {
     transform: scale(1.1);
 }
 
+.btn.help:hover + .help-modal,
+.help-modal:hover {
+    display: block;
+}
+
 .btn.quit {
     position: absolute;
     top: 10px;
@@ -191,6 +196,31 @@ body {
 
 .btn.quit:hover {
     background-color: #ec1919;
+}
+
+/* Modal */
+.help-modal {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.help-modal-content {
+    color: #333;
+    font-size: 16px;
+}
+
+/* Show modal on button hover */
+.help-button:hover + .help-modal,
+.help-modal:hover {
+    display: block;
 }
 
 /* Winner and Loser Highlights */
