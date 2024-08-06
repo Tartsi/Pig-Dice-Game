@@ -103,7 +103,7 @@ function showHeldScoreVisual(player_turn, held_number) {
     const scoreEl = document.createElement('div');
     scoreEl.textContent = `+${held_number}`;
     scoreEl.style.position = 'absolute';
-    scoreEl.style.top = '85px';
+    scoreEl.style.top = '88px';
     scoreEl.style.fontSize = '2.5rem';
     scoreEl.style.color = 'green';
     scoreEl.style.opacity = '1';
