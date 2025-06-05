@@ -15,11 +15,11 @@ jobs:
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - name: Install Poetry
         run: pip install poetry
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-root
       - name: Run migrations
         run: poetry run python backend/manage.py migrate
       - name: Run tests
