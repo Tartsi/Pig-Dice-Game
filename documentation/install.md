@@ -1,4 +1,4 @@
-# Instructions
+# Instructions for local usage
 
 ### Install:
 
@@ -7,7 +7,7 @@ Clone the project "git clone https://github.com/Tartsi/Pig-Dice-Game"
 Install Poetry dependencies
 
 ```bash
-poetry install
+poetry install --no-root
 ```
 
 Enter poetry shell
@@ -23,6 +23,8 @@ On your terminal, change to folder named 'backend'
 cd .\backend\
 ```
 
+Note: Use python or python3 depending on your operating system. On Windows, python is typically correct, while on macOS/Linux, you may need to use python3.
+
 Run migrations
 
 ```bash
@@ -37,7 +39,7 @@ Run the server
 python/python3 manage.py runserver
 ```
 
-Now you can use the application!
+Now you can use the application locally!
 
 ### Usage
 
